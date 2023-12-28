@@ -48,4 +48,61 @@ public class Sort {
     // exchange sort
 
     // cycle sort
+
+    // pigeon hole sort
+
+    // bucket sort (uniform keys)
+
+    // bucket sort (non-uniform keys)
+
+    // counting sort
+
+    // LSD Radix Sort
+
+    // MSD Radix Sort
+
+    // MSD Radix Sort (in place)
+
+    // Spreadsort
+
+    // burst sort
+
+    // flash sort
+
+    // POstman sort
+
+    // bread sort
+
+    // merge-insertion sort
+
+    // bogosort
+
+    // double bogosort
+
+    // bogobogo sort
+
+    // bozosort
+
+    // quantum bogosort
+
+    // miracle sort
+
+    // worst sort
+
+    // stooge sort
+
+    // sleep sort
+
+    // exclusion sort
+
+    // divine sort
+
+    // stalin sort
+
+    // stack sort
+
+    // hitchiker's sort
+
+    // conway sort
+
 }
