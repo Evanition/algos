@@ -1,6 +1,26 @@
 import java.util.*;
 
 public class Sort {
+    static class TreeNode {
+        TreeNode left;
+        TreeNode right;
+        int val;
+        public TreeNode(TreeNode left, TreeNode right) {
+            this.left = left;
+            this.right = right;
+        }
+
+        public TreeNode(int val) {
+            this.val = val;
+        }
+
+        public TreeNode(TreeNode left, TreeNode right, int val) {
+            this.left = left;
+            this.right = right;
+            this.val = val;
+        }
+    }
+
     // In-place merge sort
 
     // Heapsort
@@ -23,6 +43,35 @@ public class Sort {
     // Tournament Sort
 
     // Tree Sort
+    static TreeNode insert(TreeNode root, int x) {
+        if (root == null) {
+            return new TreeNode(x);
+        }
+        if (x < root.val) {
+            root.left = insert(root.left, x);
+        } else if (x > root.val) {
+            root.right = insert(root.right, x);
+        }
+        return root;
+    }
+
+    static void inOrderTraversal(TreeNode root, int[] out, int i) {
+        if (root == null) {
+            return;
+        }
+        inOrderTraversal(root.left, out, i);
+        out[i++] = root.val;
+        inOrderTraversal(root.right, out, i);
+    }
+    public static int[] treeSort(int[] input) {
+        TreeNode root = new TreeNode(input[0]);
+        for (int i = 1; i < input.length; i++) {
+            insert(root, input[i]);
+        }
+        int[] out = new int[input.length];
+        inOrderTraversal(root, out, 0);
+        return out;
+    }
 
     // Block Sort
 
@@ -81,8 +130,8 @@ public class Sort {
         int[] intermediate = new int[max + 1];
         int[] out = new int[input.length];
 
-        for (int i = 0; i < input.length; i++) {
-            intermediate[input[i]]++;
+        for (int j : input) {
+            intermediate[j]++;
         }
         for (int i = 1; i < intermediate.length; i++) {
             intermediate[i] += intermediate[i - 1];
@@ -106,7 +155,7 @@ public class Sort {
 
     // flash sort
 
-    // POstman sort
+    // Postman sort
 
     // bread sort
 
@@ -144,7 +193,7 @@ public class Sort {
 
     public static void main(String[] args) {
         int[] a = {5, 4, 6, 2, 7, 9, 2, 1, 10, 20};
-        int[] test = countingSort(a);
+        int[] test = treeSort(a);
 
         System.out.println(Arrays.toString(test));
     }
