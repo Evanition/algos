@@ -84,6 +84,45 @@ public class Sort {
     // Cubesort
 
     // QuickSort
+    static int partition(int[] input, int low, int high, int pivotIndex) {
+        int pivot = input[pivotIndex];
+        int temp = input[pivotIndex];
+        input[pivotIndex] = input[high];
+        input[high] = temp;
+
+        int left = low;
+        int right = high - 1;
+
+        while (left <= right) {
+            if (input[left] <= pivot) {
+                left++;
+            } else {
+                temp = input[left];
+                input[left] = right;
+                input[right] = temp;
+                right--;
+            }
+        }
+        temp = input[left];
+        input[left] = input[high];
+        input[high] = temp;
+
+        return left;
+    }
+
+    static void quickSort(int[] input, int hi, int lo) {
+        if (hi <= lo) return;
+        else {
+            int pIndex = (lo + hi) / 2;
+            int loc = partition(input, lo, hi, pIndex);
+            quickSort(input, lo, loc - 1);
+            quickSort(input, loc + 1, hi);
+        }
+    }
+    public static int[] quickSort(int[] input) {
+        quickSort(input, 0, input.length);
+        return input;
+    }
 
     // LibrarySort
 
@@ -193,7 +232,7 @@ public class Sort {
 
     public static void main(String[] args) {
         int[] a = {5, 4, 6, 2, 7, 9, 2, 1, 10, 20};
-        int[] test = treeSort(a);
+        int[] test = quickSort(a);
 
         System.out.println(Arrays.toString(test));
     }
